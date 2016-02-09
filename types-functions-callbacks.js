@@ -56,12 +56,10 @@ console.assert(average(100,200) === 150)
  inputs is not a number, it will return "null."
  */
 var sum = function(num1, num2){
-	if (typeof num1 !="number" || typeof num2 !="number") {
+	if (typeof num1 !=="number" || typeof num2 !=="number") {
 		return null
 	}
-	else {
 		return num1 + num2
-	}
 }
 console.assert(sum(867, 5309) === 6176);
 console.assert(sum('867', 5309) === null);
@@ -80,6 +78,11 @@ var isNegative = function(num) {
 		return false
 	}
 }
+
+var isNegative = function(num) {		// <-- another way to write
+	return num < 0
+}
+
 console.assert(isNegative(10) === false)
 console.assert(isNegative(0) === false)
 console.assert(isNegative(-999) === true)
@@ -90,7 +93,11 @@ console.assert(isNegative(-999) === true)
 // To avoid repeating yourself, use your isNegative 
 // function inside your sum funciton ***
 var sum = function(num1, num2) {
-	if (isNegative(num1) === true || isNegative(num2) === true) {
+	if (typeof num1 !=="number" || typeof num2 !=="number") {
+		return null
+	}
+
+	if (isNegative(num1) || isNegative(num2)) {
 		return null
 	}
 	else {
@@ -209,9 +216,8 @@ var doubleGlobalNumber = function() {
 }
 
 var doTwice = function(someFunction){
-	var value = someFunction()
-	var value = someFunction(value)
-	return value
+	someFunction()
+	someFunction()
 }
 
 doTwice(incrementGlobalNumber)
@@ -248,13 +254,14 @@ var conditionallyInvoke = function(someFunction) {
 conditionallyInvoke(doubleGlobalNumber)
 console.assert(NUMBER === 96)
 
-// Part 10
+//Part 10
 
 // Make the following assertion work:
 
-// var factory = (function() {
-// 	console.log("hello world")
-// })()
+// var output = factory()
+// var metaOutput = output() {
+//     log("hello world")
+// }
 
 // console.assert(factory()() === 'hello world')  // INCEPTION!
 
