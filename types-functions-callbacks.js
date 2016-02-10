@@ -273,11 +273,11 @@ console.assert(factory()() === 'hello world')  // INCEPTION!
 
 // // Want more? 
 
-var output = function(input) {
+var output2 = function(input) {
 	return input
 }
 var factory2 = function() {
-	return output
+	return output2
 }
 
 console.assert(factory2()('you sly dog') === 'you sly dog')
@@ -287,6 +287,16 @@ console.assert(factory2()(999) === 999)
 
 // // This can't be healthy...
 
-// console.assert(factory3('i have reached function nirvana')() === 'i have reached function nirvana')
-// console.assert(factory3(100)() === 100)
+var factory3 = function(input) {
+    answer = input 
+    return output3 
+}
+
+var answer = factory3()
+
+var output3 = function() {
+    return answer 
+}
+console.assert(factory3('i have reached function nirvana')() === 'i have reached function nirvana')
+console.assert(factory3(100)() === 100)
 
