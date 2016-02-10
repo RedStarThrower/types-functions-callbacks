@@ -254,29 +254,34 @@ var conditionallyInvoke = function(someFunction) {
 conditionallyInvoke(doubleGlobalNumber)
 console.assert(NUMBER === 96)
 
-//Part 10
+// Part 10
 
 // Make the following assertion work:
 
-// var output = factory()
-// var metaOutput = output() {
-//     log("hello world")
-// }
+var output = function() {
+    return "hello world"   
+}
+var factory = function() {
+    return output
+}
 
-// console.assert(factory()() === 'hello world')  // INCEPTION!
+//log(factory()())
+console.assert(factory()() === 'hello world')  // INCEPTION!
 
 
 // // Part 11
 
 // // Want more? 
 
-// var factory2 = (function()) {
-// 	var one = 999;
-// 	return
-// }
+var output = function(input) {
+	return input
+}
+var factory2 = function() {
+	return output
+}
 
-// console.assert(factory2()('you sly dog') === 'you sly dog')
-// console.assert(factory2()(999) === 999)
+console.assert(factory2()('you sly dog') === 'you sly dog')
+console.assert(factory2()(999) === 999)
 
 // // Part 12
 
